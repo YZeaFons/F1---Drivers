@@ -5,14 +5,10 @@ const API = 'http://localhost:5000/drivers'
 // ------Handlers de GetDetail---------------
 const findDriver = async (id, origin) => {
     try {
-        if (id >= 600) {
-            // if (origin === 'database') {
-            return await Driver.findByPk(id, {
-                include: {
-                    model: Team,
-                    as: 'teams'
-                }
-            })
+        if (origin === 'database') {
+            return await Driver.findByPk(id
+
+            )
         }
         return findDriverAPI(id)
     } catch (error) {
@@ -43,7 +39,8 @@ const findDriverAPI = async (id) => {
 
 const getDetail = async (req, res) => {
     const { id } = req.params
-    const origin = req.query.source || 'API'
+    const origin = req.query.source
+    //  || 'API'
     try {
         const driver = await findDriver(Number(id), origin)
         if (driver) {

@@ -6,10 +6,9 @@ module.exports = (sequelize) => {
   sequelize.define('Driver', {
     id: {
       type: DataTypes.INTEGER,
+      primaryKey: true,
       autoIncrement: true,
-      autoIncrementValue: 600,
       allowNull: false,
-      primaryKey: true
     },
     name: {
       type: DataTypes.STRING,
@@ -32,7 +31,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    birthdate: {
+    birthday: {
       type: DataTypes.DATE,
       allowNull: false
     }

@@ -1,30 +1,40 @@
+const axios = require("axios");
 const { Driver } = require("../db");
-const getDrivers = require("./getDrivers");
+const { Op } = require("sequelize");
+const API = 'http://localhost:5000/drivers'
 
 const get15drivers = async (req, res) => {
-    // const { name } = req.query
-    // return res.status(200).json(name)
-
-
-    // try {
-    //     const { name } = req.query
-    //     const allDrivers = await getDrivers()
-    //     console.log(allDrivers);
-    //     console.log(name);
-    //     const response = allDrivers.filter(value => {
-    //         return value.forename === name
-    //     })
-    //     return res.status(200).json(response)
-    // } catch (error) {
-    //     throw new Error('Busqueda no fue posible')
-    // }
-
 
     try {
-        const driversBD = await Driver.findAll({where:{}})
-        return res.status(200).json(response)
+        const nombreBuscado = req.query.name
+        if (!nombreBuscado) {
+            return res.status(500).json({ error: 'debes ingresar un nombre' });
+        }
+        const driversBD = await Driver.findAll({
+            where: {
+                'name': {
+                    [Op.iLike]: `%${nombreBuscado}%`
+                }
+            }
+        })
+        const { data } = await axios.get(API)
+        const driversAPI = data.filter(driver => {
+            return new RegExp(nombreBuscado, 'i').test(driver.name.forename)
+        })
+        const driversfixed = driversAPI.map(element => ({
+            id: element.id,
+            name: element.name?.forename,
+            surname: element.name?.surname,
+            image: element.image?.url,
+            nationality: element.nationality,
+            birthday: element.dob,
+            description: element.description,
+        }))
+        const allDrivers = driversBD.concat(driversfixed)
+        if (allDrivers.length > 15) allDrivers.slice(0, 15)
+        return res.status(200).json(allDrivers)
     } catch (error) {
-        throw new Error('Busqueda no fue posible')
+        return res.status(400).send('No fue posible hacer la busqueda')
     }
 }
 module.exports = get15drivers 
