@@ -1,0 +1,8 @@
+.notFound {
+    margin: 0;
+    background-image: url(https://images5.alphacoders.com/951/951883.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
