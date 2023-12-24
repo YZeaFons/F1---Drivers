@@ -11,6 +11,7 @@ export default function SearchBar({ onSearch }) {
     const handleClick = (event) => {
         // event.preventDefault()
         onSearch(name)
+        setName('')
     }
     // -------------- SearchBar --------------------
     return (

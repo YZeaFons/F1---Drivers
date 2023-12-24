@@ -27,7 +27,7 @@ const get15drivers = async (req, res) => {
             surname: element.name?.surname,
             image: element.image?.url,
             nationality: element.nationality,
-            birthday: element.dob,
+            teams: element.teams,
             description: element.description,
         }))
         const allDrivers = driversBD.concat(driversfixed)

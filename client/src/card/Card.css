@@ -1,0 +1,13 @@
+.CardDriver {
+    width: 300px;
+    height: 600px;
+    background-color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-radius: 20px;
+}
+
+.CardDriver img {
+    max-width: 90%;
+    margin-top: 10px;
+    border-radius: 20px;
+}

@@ -5,8 +5,9 @@ import { Route, Routes } from 'react-router-dom'
 import LandingPage from './landingPage/LandingPage'
 import Cards from './cards/Cards'
 import NotFound from './notFound/NotFound'
+import Detail from './detail/Detail'
 
-const URL = 'http://localhost:3001/F1/drivers'
+const URL = 'http://localhost:3001/F1/drivers/name'
 
 function App() {
   // -------------------- States ----------------------------
@@ -17,10 +18,11 @@ function App() {
     try {
       if (name === '') { window.alert('Debes ingresar un nombre') }
       else {
-        const { data } = await axios.get(`${URL}/name?name=${name}`)
+        const { data } = await axios.get(`${URL}?name=${name}`)
         if (data.length) {
           console.log(data);
           setDrivers(data)
+
         } else {
           window.alert('No existen coincidencias con el nombre proporcionado')
         }
@@ -44,6 +46,10 @@ function App() {
         <Route
           path='*'
           element={<NotFound />}
+        />
+        <Route
+          path='/driver/:id'
+          element={<Detail />}
         />
       </Routes>
     </div>
