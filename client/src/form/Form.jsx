@@ -4,23 +4,23 @@ import validation from '../validator/Validator';
 export default function Form(props) {
     // --------------------------- States -----------------------------
     const [newDriver, setDriver] = useState({
-        nombre: '',
-        apellido: '',
-        nacionalidad: '',
-        imagen: '',
-        fecha_de_nacimiento: '',
-        descripcion: '',
-        escuderias: '',
+        name: '',
+        surname: '',
+        nationality: '',
+        image: '',
+        birthday: '',
+        description: '',
+        teams: [],
     })
 
     const [errors, setError] = useState({
-        nombre: '',
-        apellido: '',
-        nacionalidad: '',
-        imagen: '',
-        fecha_de_nacimiento: '',
-        descripcion: '',
-        escuderias: '',
+        name: '',
+        surname: '',
+        nationality: '',
+        image: '',
+        birthday: '',
+        description: '',
+        teams: '',
     })
     // --------------------------- Functions -------------------------
     const handleChange = (event) => {
@@ -40,90 +40,92 @@ export default function Form(props) {
             <form>
                 <label>Nombre: </label>
                 <input
-                    name='nombre'
+                    name='name'
                     type="text"
                     placeholder='Ingrese el nombre del Driver'
-                    value={newDriver.nombre}
+                    value={newDriver.name}
                     onChange={handleChange}
                 />
-                <p>{errors.nombre}</p>
+                <p>{errors.name}</p>
                 <br />
 
                 <label>Apellido: </label>
                 <input
-                    name='apellido'
+                    name='surname'
                     type="text"
                     placeholder='Ingrese el apellido del Driver'
-                    value={newDriver.apellido}
+                    value={newDriver.surname}
                     onChange={handleChange}
                 />
-                <p>{errors.apellido}</p>
+                <p>{errors.surname}</p>
                 <br />
 
                 <label>Nacionalidad: </label>
                 <input
-                    name='nacionalidad'
+                    name='nationality'
                     type="text"
                     placeholder='Ingrese la nacionalidad del Driver'
-                    value={newDriver.nacionalidad}
+                    value={newDriver.nationality}
                     onChange={handleChange}
                 />
-                <p>{errors.nacionalidad}</p>
+                <p>{errors.nationality}</p>
                 <br />
 
                 <label>Imagen: </label>
                 <input
-                    name='imagen'
+                    name='image'
                     type="text"
                     placeholder='ingrese la URL de la imagen del Driver'
-                    value={newDriver.imagen}
+                    value={newDriver.image}
                     onChange={handleChange}
                 />
-                <p>{errors.imagen}</p>
+                <p>{errors.image}</p>
                 <br />
 
                 <label>Fecha de Nacimiento: </label>
                 <input
-                    name='fecha_de_nacimiento'
+                    name='birthday'
                     type="text"
                     placeholder='Ingrese aqui la fecha de nacimiento'
-                    value={newDriver.fecha_de_nacimiento}
+                    value={newDriver.birthday}
                     onChange={handleChange}
                 />
-                <p>{errors.fecha_de_nacimiento}</p>
+                <p>{errors.birthday}</p>
                 <br />
 
                 <label>Escuderías: </label>
                 <input
-                    name='escuderias'
+                    name='teams'
                     type="text"
                     placeholder='Ingrese las escuderias a las que ha pertenecido'
+                    value={newDriver.teams}
                     onChange={handleChange}
                 />
-                <p>{errors.escuderias}</p>
+                <p>{newDriver.teams}</p>
+                <p>{errors.teams}</p>
                 <br />
 
                 <label>Descripcion: </label>
                 <input
-                    name='descripcion'
+                    name='description'
                     type="text"
                     placeholder='Ingrese una breve descripción de el nuevo Driver'
-                    value={newDriver.descripcion}
+                    value={newDriver.description}
                     onChange={handleChange}
                 />
-                <p>{errors.descripcion}</p>
+                <p>{errors.description}</p>
                 <br />
                 {/* <hr /> */}
                 <button
                     type='submit'
                     disabled={
-                        errors.nombre ||
-                        errors.apellido ||
-                        errors.nacionalidad ||
-                        errors.imagen ||
-                        errors.fecha_de_nacimiento ||
-                        errors.descripcion ||
-                        errors.escuderias
+                        errors.name ||
+                        errors.surname ||
+                        errors.nationality ||
+                        errors.image ||
+                        errors.birthday ||
+                        errors.description ||
+                        errors.teams
                     }
                 >Crear</button>
                 <hr />

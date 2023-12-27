@@ -6,36 +6,36 @@ export default function validation(driver) {
 
     let errorsList = {}
     // ------------------------------ Errors Nombre --------------------------
-    if (driver.nombre === '') errorsList.nombre = 'Debes ingresar un nombre'
-    else if (driver.nombre.length < 2 && driver.nombre.length > 20) errorsList.nombre = 'El nombre debe contener entre 2 y 20 caracteres'
+    if (driver.name === '') errorsList.name = 'Debes ingresar un nombre'
+    else if (driver.name.length < 2 || driver.name.length > 20) errorsList.name = 'El nombre debe contener entre 2 y 20 caracteres'
     // ------------------------------ Errors Apellido --------------------------
-    if (driver.apellido === '') errorsList.apellido = 'Debes ingresar un apellido'
-    else if (driver.apellido.length < 2 && driver.apellido.length > 20) errorsList.apellido = 'El apellido debe contener entre 2 y 20 caracteres'
+    if (driver.surname === '') errorsList.surname = 'Debes ingresar un apellido'
+    else if (driver.surname.length < 2 || driver.surname.length > 20) errorsList.surname = 'El apellido debe contener entre 2 y 20 caracteres'
     // ------------------------------ Errors Nacionalidad --------------------------
-    if (driver.nacionalidad === '') errorsList.nacionalidad = 'Debes ingresar una nacionalidad'
-    else if (driver.nacionalidad.length < 2 && driver.nacionalidad.length > 20) errorsList.nacionalidad = 'La Nacionalidad debe contener entre 2 y 20 caracteres'
+    if (driver.nationality === '') errorsList.nationality = 'Debes ingresar una nacionalidad'
+    else if (driver.nationality.length < 2 || driver.nationality.length > 20) errorsList.nationality = 'La Nacionalidad debe contener entre 2 y 20 caracteres'
     // ------------------------------ Errors Imagen --------------------------
-    if (driver.imagen === '') errorsList.imagen = 'Debes ingresar la URL de la imagen'
-    else if (!patronURL.test(driver.imagen)) errorsList.imagen = 'Debes ingresar una dirección URL válida'
+    if (driver.image === '') errorsList.image = 'Debes ingresar la URL de la imagen'
+    else if (!patronURL.test(driver.image)) errorsList.image = 'Debes ingresar una dirección URL válida'
     // ------------------------------ Errors Fecha de nacimiento --------------------------
-    if (driver.fecha_de_nacimiento === '') errorsList.fecha_de_nacimiento = 'Debes ingresar la fecha de nacimiento del Driver'
-    else if (!dateVal.test(driver.fecha_de_nacimiento)) errorsList.fecha_de_nacimiento = 'La fecha debe seguir el patrón YYYY-MM-DD'
+    if (driver.birthday === '') errorsList.birthday = 'Debes ingresar la fecha de nacimiento del Driver'
+    else if (!dateVal.test(driver.birthday)) errorsList.birthday = 'La fecha debe seguir el patrón YYYY-MM-DD'
     // ------------------------------ Errors Escuderias --------------------------
-    if (driver.escuderias === '') errorsList.escuderias = 'Debes ingresar una escudería'
+    if (driver.teams.length === 0) errorsList.teams = 'Debes ingresar al menos una escudería'
     // ------------------------------ Errors Descripción --------------------------
-    if (driver.descripcion === '') errorsList.descripcion = 'Debes ingresar una descripción del nuevo Driver'
+    if (driver.description === '') errorsList.description = 'Debes ingresar una descripción del nuevo Driver'
 
     return errorsList
 }
 
 // const prueba = {
-//     nombre: 'Yeison',
-//     apellido: 'Zea',
-//     nacionalidad: 'Colombia',
-//     imagen: 'http://en.wikipedia.org/wiki/Chris_Bristow',
-//     fecha_de_nacimiento: '2023-12-2',
-//     descripcion: 'dd',
-//     escuderias: 'dd',
+//     name: 'Yeison',
+//     surname: 'Zea',
+//     nationality: 'Colombia',
+//     image: 'http://en.wikipedia.org/wiki/Chris_Bristow',
+//     birthday: '2023-12-2',
+//     description: 'dd',
+//     teams: ['def', 'grt'],
 // }
 
 // console.log(validation(prueba));
