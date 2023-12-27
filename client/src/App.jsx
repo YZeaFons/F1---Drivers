@@ -6,14 +6,16 @@ import LandingPage from './landingPage/LandingPage'
 import Cards from './cards/Cards'
 import NotFound from './notFound/NotFound'
 import Detail from './detail/Detail'
+import Form from './form/Form'
 
 const URL = 'http://localhost:3001/F1/drivers/name'
 
 function App() {
-  // -------------------- States ----------------------------
+  // ?---------------------- States ----------------------------
   const [drivers, setDrivers] = useState([])
 
-  // --------------------- Functions ------------------------
+  // ?--------------------- Functions ------------------------
+  //                   *** F onSearch ***
   const onSearch = async (name) => {
     try {
       if (name === '') { window.alert('Debes ingresar un nombre') }
@@ -31,6 +33,11 @@ function App() {
       alert(error.message)
     }
   }
+  //                   *** F createDriver ***
+  const createDriver = () => {
+
+  }
+
 
   return (
     <div className='App'>
@@ -50,6 +57,10 @@ function App() {
         <Route
           path='/driver/:id'
           element={<Detail />}
+        />
+        <Route
+          path='/create'
+          element={<Form createDriver={createDriver} />}
         />
       </Routes>
     </div>

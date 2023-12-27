@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 export default function Card(props) {
     console.log(props.id);
     return (
-        <div>
-            <div className='CardDriver'>
+        <div className='card'>
+            <div className='content'>
                 <Link to={`/driver/${props.id}`}>
                     <img src={props.image} alt="No image found" />
                 </Link>
