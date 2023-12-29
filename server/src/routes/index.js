@@ -4,7 +4,6 @@ const getDetail = require("../controllers/getDetail");
 const get15drivers = require("../controllers/get15Drivers");
 const postDriver = require("../controllers/postDriver");
 const gettingTeams = require("../Handlers/gettingTeams");
-const getTeams = require("../controllers/getTeams");
 const router = Router();
 
 router.get('/driver', getDrivers)

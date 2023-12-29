@@ -9,20 +9,20 @@ import Detail from './detail/Detail'
 import Form from './form/Form'
 
 const URL = 'http://localhost:3001/F1/drivers/name'
+const URL2 = 'http://localhost:3001/F1/driver'
 
 function App() {
   // ?---------------------- States ----------------------------
   const [drivers, setDrivers] = useState([])
 
   // ?--------------------- Functions ------------------------
-  //                   *** F onSearch ***
+  // ********************* F onSearch ************************
   const onSearch = async (name) => {
     try {
       if (name === '') { window.alert('Debes ingresar un nombre') }
       else {
         const { data } = await axios.get(`${URL}?name=${name}`)
         if (data.length) {
-          console.log(data);
           setDrivers(data)
 
         } else {
@@ -33,7 +33,16 @@ function App() {
       alert(error.message)
     }
   }
-  //                   *** F createDriver ***
+  // ******************* F Get All Drivers **********************
+  const getAllDrivers = async () => {
+    try {
+      const { data } = await axios.get(URL2)
+      setDrivers(data)
+    } catch (error) {
+      alert(error.message)
+    }
+  }
+  // ******************* F createDriver *******************
   const createDriver = () => {
 
   }
@@ -48,7 +57,7 @@ function App() {
         />
         <Route
           path='/home'
-          element={<Cards onSearch={onSearch} drivers={drivers} />}
+          element={<Cards onSearch={onSearch} drivers={drivers} getAllDrivers={getAllDrivers} />}
         />
         <Route
           path='*'

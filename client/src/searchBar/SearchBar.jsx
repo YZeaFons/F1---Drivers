@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-export default function SearchBar({ onSearch }) {
+import { NavLink } from 'react-router-dom';
+export default function SearchBar({ onSearch, getAllDrivers }) {
     // ------------- States ---------------------
     const [name, setName] = useState('')
     // ------------- Handlers--------------------
@@ -26,6 +27,10 @@ export default function SearchBar({ onSearch }) {
                 placeholder='Ingrese nombre a buscar'
             />
             <button onClick={() => handleClick()}>Buscar</button>
+            <NavLink to='/create'>
+                <button>Crear Nuevo</button>
+            </NavLink>
+            <button onClick={() => { getAllDrivers() }}>Todos</button>
 
         </div>
     )

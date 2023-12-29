@@ -3,10 +3,10 @@ import SearchBar from '../searchBar/SearchBar';
 import Card from '../card/Card';
 import './Cards.css'
 
-export default function Cards({ onSearch, drivers }) {
+export default function Cards({ onSearch, drivers, getAllDrivers }) {
     return (
         <section>
-            <SearchBar onSearch={onSearch} />
+            <SearchBar onSearch={onSearch} getAllDrivers={getAllDrivers} />
             <div className='cardContainer'>
                 {
                     !drivers.length

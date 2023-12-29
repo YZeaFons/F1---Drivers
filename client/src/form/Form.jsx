@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import validation from '../validator/Validator';
+import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux'
 
 export default function Form(props) {
+    // --------------------------- Hooks -----------------------------
+    const dispatch = useDispatch()
     // --------------------------- States -----------------------------
     const [newDriver, setDriver] = useState({
         name: '',
@@ -128,6 +132,9 @@ export default function Form(props) {
                         errors.teams
                     }
                 >Crear</button>
+                <NavLink to='/home'>
+                    <button>Cancelar</button>
+                </NavLink>
                 <hr />
             </form>
         </div>

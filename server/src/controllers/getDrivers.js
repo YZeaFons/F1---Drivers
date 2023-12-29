@@ -8,7 +8,7 @@ const getDrivers = async (req, res) => {
         const { data } = await axios.get(API)
         const driversAPI = data.map(element => ({
             id: element.id,
-            forename: element.name?.forename,
+            name: element.name?.forename,
             surname: element.name?.surname,
             teams: element.teams,
             image: element.image?.url,
