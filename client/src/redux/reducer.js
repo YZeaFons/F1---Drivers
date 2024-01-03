@@ -6,12 +6,12 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_DRIVER:
+        case 'ADD_DRIVER':
             return {
                 ...state,
                 myDrivers: action.payload
             }
-        case REMOVE_DRIVER:
+        case 'REMOVE_DRIVER':
             return {
                 ...state,
                 myDrivers: action.payload

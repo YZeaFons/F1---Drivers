@@ -38,10 +38,15 @@ export default function Form(props) {
         }))
     }
 
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        props.createDriver(newDriver)
+    }
+
     return (
         <div >
             <h2>Crea un nuevo Driver:</h2>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <label>Nombre: </label>
                 <input
                     name='name'
