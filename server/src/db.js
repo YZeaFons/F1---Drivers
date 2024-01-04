@@ -21,7 +21,6 @@ TeamModel(sequelize)
 
 
 
-
 const basename = path.basename(__filename);
 const modelDefiners = [];
 
@@ -45,6 +44,7 @@ Team.belongsToMany(Driver, { through: 'driver_team' })
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
+
 
 module.exports = {
   Driver,

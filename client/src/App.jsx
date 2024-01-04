@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import axios from 'axios'
 import './App.css'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useNavigate } from 'react-router-dom'
 import LandingPage from './landingPage/LandingPage'
 import Cards from './cards/Cards'
 import NotFound from './notFound/NotFound'
 import Detail from './detail/Detail'
 import Form from './form/Form'
+import { useDispatch } from 'react-redux'
+import { addDriver } from './redux/actions'
 
 const URL = 'http://localhost:3001/F1/drivers/name'
 const URL2 = 'http://localhost:3001/F1/driver'
@@ -14,8 +16,10 @@ const URL2 = 'http://localhost:3001/F1/driver'
 function App() {
   // ?---------------------- States ----------------------------
   const [drivers, setDrivers] = useState([])
-
-  // ?--------------------- Functions ------------------------
+  // ?---------------------- Hooks ----------------------------
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  // ?--------------------- ASYNC Functions ------------------------
   // ********************* F onSearch ************************
   const onSearch = async (name) => {
     try {
@@ -42,9 +46,12 @@ function App() {
       alert(error.message)
     }
   }
+  // ?--------------------- SYNC Functions ------------------------
   // ******************* F createDriver *******************
   const createDriver = (newDriver) => {
-
+    dispatch(addDriver(newDriver))
+    window.alert('Su driver fue creado correctamente')
+    navigate('/home')
   }
 
 

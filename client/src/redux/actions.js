@@ -6,6 +6,7 @@ export const addDriver = (newDriver) => {
     return async (dispatch) => {
         try {
             const { data } = await axios.post(endpoint, newDriver)
+            console.log(data);
             return dispatch({
                 type: ADD_DRIVER,
                 payload: data

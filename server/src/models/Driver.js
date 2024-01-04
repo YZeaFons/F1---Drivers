@@ -25,7 +25,7 @@ module.exports = (sequelize) => {
     image: {
       type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: './unknown-image.png'
+      defaultValue: 'unknown-image.png'
     },
     nationality: {
       type: DataTypes.STRING,

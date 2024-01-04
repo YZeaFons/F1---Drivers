@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import validation from '../validator/Validator';
 import { NavLink } from 'react-router-dom';
-import { useDispatch } from 'react-redux'
 
 export default function Form(props) {
-    // --------------------------- Hooks -----------------------------
-    const dispatch = useDispatch()
     // --------------------------- States -----------------------------
     const [newDriver, setDriver] = useState({
         name: '',
@@ -41,6 +38,16 @@ export default function Form(props) {
     const handleSubmit = (event) => {
         event.preventDefault()
         props.createDriver(newDriver)
+        setDriver({
+            name: '',
+            surname: '',
+            nationality: '',
+            image: '',
+            birthday: '',
+            description: '',
+            teams: [],
+        })
+
     }
 
     return (
