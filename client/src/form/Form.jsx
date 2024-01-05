@@ -1,8 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import Select from 'react-select'
 import validation from '../validator/Validator';
 import { NavLink } from 'react-router-dom';
+import axios from 'axios'
+
+const URLTeams = 'http://localhost:3001/F1/teams'
 
 export default function Form(props) {
+    // --------------------------- USE EFFECT -------------------------
+    useEffect(() => {
+        const getAllTeams = async () => {
+            try {
+                const { data } = await axios.get(URLTeams)
+                setTeams(data)
+            } catch (error) {
+                alert(error.message)
+            }
+        }
+        getAllTeams()
+    }, [])
     // --------------------------- States -----------------------------
     const [newDriver, setDriver] = useState({
         name: '',
@@ -23,6 +39,7 @@ export default function Form(props) {
         description: '',
         teams: '',
     })
+    const [teams, setTeams] = useState([])
     // --------------------------- Functions -------------------------
     const handleChange = (event) => {
         setDriver({
@@ -47,8 +64,9 @@ export default function Form(props) {
             description: '',
             teams: [],
         })
-
     }
+
+
 
     return (
         <div >
@@ -120,6 +138,11 @@ export default function Form(props) {
                 <p>{newDriver.teams}</p>
                 <p>{errors.teams}</p>
                 <br />
+
+                <label>Escuderias 2: </label>
+                <Select
+                    options={teams.map((option) => ({ label: option.name, value: option.id }))}
+                />
 
                 <label>Descripcion: </label>
                 <input

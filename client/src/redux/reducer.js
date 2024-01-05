@@ -1,7 +1,8 @@
 import { ADD_DRIVER, REMOVE_DRIVER } from "./actionType";
 
 const initialState = {
-    myDrivers: []
+    myDrivers: [],
+    myTeams: []
 }
 
 const reducer = (state = initialState, action) => {
