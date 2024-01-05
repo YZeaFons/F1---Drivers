@@ -18,9 +18,6 @@ DriverModel(sequelize)
 TeamModel(sequelize)
 
 
-
-
-
 const basename = path.basename(__filename);
 const modelDefiners = [];
 

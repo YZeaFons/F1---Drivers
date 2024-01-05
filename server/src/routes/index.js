@@ -7,7 +7,7 @@ const gettingTeams = require("../Handlers/gettingTeams");
 const router = Router();
 
 router.get('/driver', getDrivers)
-router.get('/teams', gettingTeams)
+// router.get('/teams', gettingTeams)
 router.get('/driver/:id', getDetail)
 router.get('/drivers/name', get15drivers)
 router.post('/driver', postDriver)

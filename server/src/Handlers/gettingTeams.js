@@ -21,12 +21,12 @@ const gettingTeams = async (req, res) => {
                 await Team.findOrCreate({ where: { Name: element } })
             })
         )
-        const teamsBD = await Team.findAll()
-        return res.json(teamsBD)
+        // const teamsBD = await Team.findAll()
+        // return res.json(teamsBD)
 
 
     } catch (error) {
         return res.status(500).send(error.message)
     }
 }
-module.exports = gettingTeams
+module.exports = { gettingTeams }
