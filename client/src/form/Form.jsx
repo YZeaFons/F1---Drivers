@@ -27,7 +27,7 @@ export default function Form(props) {
         image: '',
         birthday: '',
         description: '',
-        teams: [],
+        teams: '',
     })
 
     const [errors, setError] = useState({
@@ -40,6 +40,7 @@ export default function Form(props) {
         teams: '',
     })
     const [teams, setTeams] = useState([])
+    const [teamsDriver, setTeamsDriver] = useState([])
     // --------------------------- Functions -------------------------
     const handleChange = (event) => {
         setDriver({
@@ -62,11 +63,21 @@ export default function Form(props) {
             image: '',
             birthday: '',
             description: '',
-            teams: [],
+            teams: '',
         })
     }
 
-
+    const handleSelectChange = (props) => {
+        // const { value } = event.target
+        // console.log('Este es el punto de select', props);
+        setTeamsDriver(props)
+        setDriver({
+            ...newDriver,
+            teams: props.map(option => option.value).join()
+        })
+    }
+    console.log('Estos son los temas', teamsDriver);
+    console.log('Este es el Driver', newDriver);
 
     return (
         <div >
@@ -127,7 +138,7 @@ export default function Form(props) {
                 <p>{errors.birthday}</p>
                 <br />
 
-                <label>Escuderías: </label>
+                {/* <label>Escuderías: </label>
                 <input
                     name='teams'
                     type="text"
@@ -137,12 +148,17 @@ export default function Form(props) {
                 />
                 <p>{newDriver.teams}</p>
                 <p>{errors.teams}</p>
-                <br />
+                <br /> */}
 
                 <label>Escuderias 2: </label>
                 <Select
-                    options={teams.map((option) => ({ label: option.name, value: option.id }))}
+                    options={teams.map((option) => ({ label: option.Name, value: option.Name }))}
+                    onChange={handleSelectChange}
+                    isMulti
+                    value={teamsDriver}
                 />
+                <p>{errors.teams}</p>
+                <br />
 
                 <label>Descripcion: </label>
                 <input
