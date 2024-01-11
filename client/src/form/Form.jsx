@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Select from 'react-select'
 import validation from '../validator/Validator';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios'
@@ -63,20 +62,37 @@ export default function Form(props) {
             image: '',
             birthday: '',
             description: '',
-            teams: '',
+            teams: ''
         })
     }
 
-    const handleSelectChange = (props) => {
-        // const { value } = event.target
-        // console.log('Este es el punto de select', props);
-        setTeamsDriver(props)
-        setDriver({
-            ...newDriver,
-            teams: props.map(option => option.value).join()
-        })
+    const handleSelectChange = (event) => {
+        event.preventDefault()
+        const { value } = event.target
+        if (teamsDriver.includes(value)) {
+            const newArray = teamsDriver.filter(option => option !== value)
+            setTeamsDriver(newArray)
+        } else {
+            setTeamsDriver(() => {
+                const updatedTeams = [...teamsDriver, value]
+                const arrayteamsDriver = updatedTeams.join()
+                setDriver(() => ({
+                    ...newDriver,
+                    teams: arrayteamsDriver
+                }))
+                return updatedTeams
+            }
+            )
+            // setTeamsDriver([...teamsDriver, value])
+            // const arrayteamsDriver = teamsDriver.join()
+            // console.log('prueba array nuevo', arrayteamsDriver);
+            // setDriver({
+            //     ...newDriver,
+            //     teams: arrayteamsDriver
+            // })
+        }
     }
-    console.log('Estos son los temas', teamsDriver);
+    console.log('Estos son los teams', teamsDriver);
     console.log('Este es el Driver', newDriver);
 
     return (
@@ -138,27 +154,40 @@ export default function Form(props) {
                 <p>{errors.birthday}</p>
                 <br />
 
-                {/* <label>Escuderías: </label>
-                <input
+                <label>Escuderías: </label>
+                <br />
+                {/* <input
                     name='teams'
                     type="text"
                     placeholder='Ingrese las escuderias a las que ha pertenecido'
                     value={newDriver.teams}
                     onChange={handleChange}
-                />
-                <p>{newDriver.teams}</p>
-                <p>{errors.teams}</p>
-                <br /> */}
+                /> */}
+                <select multiple onChange={handleSelectChange}>
+                    {teams.map((option) => (
+                        <option
+                            key={option.Name}
+                            value={option.Name}
+                        >
+                            {option.Name}
+                        </option>
+                    ))}
 
-                <label>Escuderias 2: </label>
+                </select>
+
+                <p>Selected options: {newDriver.teams}</p>
+                <p>{errors.teams}</p>
+                <br />
+
+                {/* <label>Escuderias 2: </label>
                 <Select
                     options={teams.map((option) => ({ label: option.Name, value: option.Name }))}
                     onChange={handleSelectChange}
                     isMulti
                     value={teamsDriver}
                 />
-                <p>{errors.teams}</p>
-                <br />
+                <p>{errors.teamsDriver}</p>
+                <br /> */}
 
                 <label>Descripcion: </label>
                 <input

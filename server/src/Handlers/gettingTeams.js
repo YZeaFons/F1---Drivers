@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { Team } = require("../db");
+const { Teams } = require("../db");
 
 const API = 'http://localhost:5000/drivers'
 
@@ -18,7 +18,7 @@ const gettingTeams = async (req, res) => {
         }
         await Promise.all(
             newArray.map(async element => {
-                await Team.findOrCreate({ where: { Name: element } })
+                await Teams.findOrCreate({ where: { Name: element } })
             })
         )
         // const teamsBD = await Team.findAll()

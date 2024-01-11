@@ -34,10 +34,10 @@ let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { Driver, Team } = sequelize.models;
+const { Driver, Teams } = sequelize.models;
 // --------A continuacion creamos la relacion entre tablas----
-Driver.belongsToMany(Team, { through: 'driver_team' })
-Team.belongsToMany(Driver, { through: 'driver_team' })
+Driver.belongsToMany(Teams, { through: 'driver_team' })
+Teams.belongsToMany(Driver, { through: 'driver_team' })
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
@@ -45,7 +45,7 @@ Team.belongsToMany(Driver, { through: 'driver_team' })
 
 module.exports = {
   Driver,
-  Team,
+  Teams,
   // ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
 };
