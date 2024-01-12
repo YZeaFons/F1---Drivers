@@ -31,12 +31,16 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    teams: {
-      type: DataTypes.STRING,
-    },
+    // teams: {
+    //   type: DataTypes.STRING,
+    // },
     birthday: {
       type: DataTypes.DATE,
       allowNull: false
+    },
+    source: {
+      type: DataTypes.STRING,
+      defaultValue: 'database'
     }
   }, { timestamps: false });
 };

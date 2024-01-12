@@ -11,11 +11,8 @@ export const addDriver = (newDriver) => {
                 type: ADD_DRIVER,
                 payload: data
             })
-
         } catch (error) {
             alert(error.message)
         }
-
-
     }
 }

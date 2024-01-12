@@ -12,6 +12,7 @@ const getDrivers = async (req, res) => {
             surname: element.name?.surname,
             teams: element.teams,
             image: element.image?.url,
+            source: 'API',
             // source: 'API'
         }));
         const allDrivers = driversBD.concat(driversAPI)

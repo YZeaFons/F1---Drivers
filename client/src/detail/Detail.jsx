@@ -1,15 +1,20 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-const URL = 'http://localhost:3001/F1/driver'
+import { Link, useLocation, useParams } from 'react-router-dom';
+const URL = 'http://localhost:5000/drivers'
 
 export default function Detail(props) {
     // ---------------- States ----------------
     const { id } = useParams()
+    const location = useLocation()
     const [driver, setDriver] = useState({})
+
+    const queryParams = new URLSearchParams(location.search)
+    const source = queryParams.get('source')
     // ---------------Use Effect ---------------
+    console.log('Estos son mis datos para buscar', id, source);
     useEffect(() => {
-        axios(`${URL}/${id}`)
+        axios(`${URL}/${id}?source=${source}`)
             .then(({ data }) => {
                 if (!data) {
                     window.alert('Numero de Id no disponible')

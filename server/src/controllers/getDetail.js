@@ -1,4 +1,4 @@
-const { Driver, Team } = require("../db")
+const { Driver, Teams } = require("../db")
 const axios = require('axios')
 const API = 'http://localhost:5000/drivers'
 
@@ -23,7 +23,7 @@ const findDriverAPI = async (id) => {
             id: data.id,
             forename: data.name?.forename,
             surname: data.name?.surname,
-            image: data.image?.url,
+            image: data.image?.url ?? '../models/unknown image.png',
             birthday: data.dob,
             nationality: data.nationality,
             teams: data.teams,
