@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-export default function SearchBar({ onSearch, getAllDrivers }) {
-    // ------------- States ---------------------
+export default function SearchBar({ onSearch, allDrivers }) {
+    //? ------------- States ---------------------
     const [name, setName] = useState('')
-    // ------------- Handlers--------------------
+    //? ------------- Handlers--------------------
     const handlerChange = (event) => {
         const { value } = event.target
         setName(value)
     }
     // ----------
     const handleClick = (event) => {
-        // event.preventDefault()
         onSearch(name)
         setName('')
     }
-    // -------------- SearchBar --------------------
+
     return (
         <div>
             <label>Driver :  </label>
@@ -30,7 +29,7 @@ export default function SearchBar({ onSearch, getAllDrivers }) {
             <NavLink to='/create'>
                 <button>Crear Nuevo</button>
             </NavLink>
-            <button onClick={() => { getAllDrivers() }}>Todos</button>
+            <button onClick={() => { allDrivers() }}>Todos</button>
 
         </div>
     )

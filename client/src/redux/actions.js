@@ -1,6 +1,7 @@
 import axios from "axios"
-import { ADD_DRIVER, GET_DETAIL, GET_DRIVERS } from "./actionType"
+import { ADD_DRIVER, GET_DETAIL, GET_DRIVERS, SEARCH_NAME } from "./actionType"
 const endpoint = 'http://localhost:3001/F1/driver'
+const URL = 'http://localhost:3001/F1/drivers/name'
 
 export const addDriver = (newDriver) => {
     return async (dispatch) => {
@@ -34,5 +35,19 @@ export const getDetailDriver = (id) => {
     return {
         type: GET_DETAIL,
         payload: id
+    }
+}
+
+export const searchByName = (name) => {
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.get(`${URL}?name=${name}`)
+            return dispatch({
+                type: SEARCH_NAME,
+                payload: data
+            })
+        } catch (error) {
+            alert(error.message)
+        }
     }
 }

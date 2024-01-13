@@ -3,18 +3,30 @@ import SearchBar from '../searchBar/SearchBar';
 import Card from '../card/Card';
 import './Cards.css'
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllDrivers } from '../redux/actions'
+import { getAllDrivers, searchByName } from '../redux/actions'
 
-export default function Cards({ onSearch }) {
+export default function Cards(props) {
     const dispatch = useDispatch()
-    const myDrivers = useSelector(state => state.allDrivers)
+    const myDrivers = useSelector(state => state.myDrivers)
     // ?---------------------- useEffect ----------------------------
     useEffect(() => {
         dispatch(getAllDrivers())
     }, [])
+    // ?--------------------- ASYNC Functions ------------------------
+    // ********************* F onSearch ************************
+    const onSearch = async (name) => {
+        if (name === '') { window.alert('Debes ingresar un nombre') }
+        dispatch(searchByName(name))
+        if (myDrivers.length === 0) window.alert('No existen coincidencias con el nombre proporcionado')
+    }
+    // ******************* F Get All Drivers **********************
+    const allDrivers = () => {
+        dispatch(getAllDrivers())
+    }
+
     return (
         <section>
-            <SearchBar onSearch={onSearch} getAllDrivers={getAllDrivers} />
+            <SearchBar onSearch={onSearch} allDrivers={allDrivers} />
             <div className='cardContainer'>
                 {
                     !myDrivers.length

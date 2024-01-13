@@ -6,7 +6,7 @@ import axios from 'axios'
 const URLTeams = 'http://localhost:3001/F1/teams'
 
 export default function Form(props) {
-    // --------------------------- USE EFFECT -------------------------
+    //? --------------------------- USE EFFECT -------------------------
     useEffect(() => {
         const getAllTeams = async () => {
             try {
@@ -18,7 +18,7 @@ export default function Form(props) {
         }
         getAllTeams()
     }, [])
-    // --------------------------- States -----------------------------
+    //? --------------------------- States -----------------------------
     const [newDriver, setDriver] = useState({
         forename: '',
         surname: '',
@@ -40,7 +40,7 @@ export default function Form(props) {
     })
     const [teams, setTeams] = useState([])
     const [teamsDriver, setTeamsDriver] = useState([])
-    // --------------------------- Functions -------------------------
+    //? --------------------------- Handlers -------------------------
     const handleChange = (event) => {
         setDriver({
             ...newDriver,
@@ -83,17 +83,8 @@ export default function Form(props) {
                 return updatedTeams
             }
             )
-            // setTeamsDriver([...teamsDriver, value])
-            // const arrayteamsDriver = teamsDriver.join()
-            // console.log('prueba array nuevo', arrayteamsDriver);
-            // setDriver({
-            //     ...newDriver,
-            //     teams: arrayteamsDriver
-            // })
         }
     }
-    console.log('Estos son los teams', teamsDriver);
-    console.log('Este es el Driver', newDriver);
 
     return (
         <div >

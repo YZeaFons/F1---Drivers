@@ -8,11 +8,11 @@ const get15drivers = async (req, res) => {
     try {
         const nombreBuscado = req.query.name
         if (!nombreBuscado) {
-            return res.status(500).json({ error: 'debes ingresar un nombre' });
+            return res.json({ error: 'debes ingresar un nombre' });
         }
         const driversBD = await Driver.findAll({
             where: {
-                'name': {
+                'forename': {
                     [Op.iLike]: `%${nombreBuscado}%`
                 }
             }
@@ -23,7 +23,7 @@ const get15drivers = async (req, res) => {
         })
         const driversfixed = driversAPI.map(element => ({
             id: element.id,
-            name: element.name?.forename,
+            forename: element.name?.forename,
             surname: element.name?.surname,
             image: element.image?.url,
             nationality: element.nationality,

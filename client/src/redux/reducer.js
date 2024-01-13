@@ -1,9 +1,11 @@
-import { ADD_DRIVER, GET_DETAIL, GET_DRIVERS, REMOVE_DRIVER } from "./actionType";
+import { ADD_DRIVER, GET_DETAIL, GET_DRIVERS, GET_ORIGIN, REMOVE_DRIVER, SEARCH_NAME } from "./actionType";
 
 const initialState = {
     allDrivers: [],
     myDrivers: [],
-    myTeams: []
+    myDetailDriver: {},
+    myTeams: [],
+    origins: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -32,8 +34,23 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 myDrivers: detailDriver
             }
+        case SEARCH_NAME:
+            return {
+                ...state,
+                myDrivers: action.payload
+            }
+        case GET_ORIGIN:
+            let allOrigins = state.allDrivers.filter(item => item.source)
+            return {
+                ...state,
+                origins: allOrigins
+            }
         default:
             return { ...state };
     }
 }
 export default reducer
+
+
+// let allOrigins = state.allDrivers.filter((item, index) => { item.source })
+// console.log(allOrigins);
