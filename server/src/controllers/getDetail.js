@@ -6,9 +6,7 @@ const API = 'http://localhost:5000/drivers'
 const findDriver = async (id, origin) => {
     try {
         if (origin === 'database') {
-            return await Driver.findByPk(id
-
-            )
+            return await Driver.findByPk(id)
         }
         return findDriverAPI(id)
     } catch (error) {
@@ -19,11 +17,12 @@ const findDriver = async (id, origin) => {
 const findDriverAPI = async (id) => {
     try {
         const { data } = await axios.get(`${API}/${id}`)
+        console.log('Esta es Back', data);
         const driver = {
             id: data.id,
             forename: data.name?.forename,
             surname: data.name?.surname,
-            image: data.image?.url ?? '../models/unknown image.png',
+            image: data.image?.url,
             birthday: data.dob,
             nationality: data.nationality,
             teams: data.teams,

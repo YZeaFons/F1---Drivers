@@ -6,8 +6,8 @@ export default function validation(driver) {
 
     let errorsList = {}
     // ------------------------------ Errors Nombre --------------------------
-    if (driver.name === '') errorsList.name = 'Debes ingresar un nombre'
-    else if (driver.name.length < 2 || driver.name.length > 20) errorsList.name = 'El nombre debe contener entre 2 y 20 caracteres'
+    if (driver.forename === '') errorsList.forename = 'Debes ingresar un nombre'
+    else if (driver.forename.length < 2 || driver.forename.length > 20) errorsList.forename = 'El nombre debe contener entre 2 y 20 caracteres'
     // ------------------------------ Errors Apellido --------------------------
     if (driver.surname === '') errorsList.surname = 'Debes ingresar un apellido'
     else if (driver.surname.length < 2 || driver.surname.length > 20) errorsList.surname = 'El apellido debe contener entre 2 y 20 caracteres'

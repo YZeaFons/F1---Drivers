@@ -1,12 +1,11 @@
 import axios from "axios"
-import { ADD_DRIVER } from "./actionType"
+import { ADD_DRIVER, GET_DETAIL, GET_DRIVERS } from "./actionType"
+const endpoint = 'http://localhost:3001/F1/driver'
 
 export const addDriver = (newDriver) => {
-    const endpoint = 'http://localhost:3001/F1/driver'
     return async (dispatch) => {
         try {
             const { data } = await axios.post(endpoint, newDriver)
-            console.log(data);
             return dispatch({
                 type: ADD_DRIVER,
                 payload: data
@@ -14,5 +13,26 @@ export const addDriver = (newDriver) => {
         } catch (error) {
             alert(error.message)
         }
+    }
+}
+
+export const getAllDrivers = () => {
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.get(endpoint)
+            return dispatch({
+                type: GET_DRIVERS,
+                payload: data
+            })
+        } catch (error) {
+            alert(error.message)
+        }
+    }
+}
+
+export const getDetailDriver = (id) => {
+    return {
+        type: GET_DETAIL,
+        payload: id
     }
 }

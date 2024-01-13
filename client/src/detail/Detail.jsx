@@ -1,26 +1,18 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation, useParams } from 'react-router-dom';
-const URL = 'http://localhost:5000/drivers'
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
+import { getDetailDriver } from '../redux/actions';
 
 export default function Detail(props) {
+    const dispatch = useDispatch()
+    const driver = useSelector(state => state.myDrivers[0])
     // ---------------- States ----------------
     const { id } = useParams()
-    const location = useLocation()
-    const [driver, setDriver] = useState({})
 
-    const queryParams = new URLSearchParams(location.search)
-    const source = queryParams.get('source')
     // ---------------Use Effect ---------------
-    console.log('Estos son mis datos para buscar', id, source);
     useEffect(() => {
-        axios(`${URL}/${id}?source=${source}`)
-            .then(({ data }) => {
-                if (!data) {
-                    window.alert('Numero de Id no disponible')
-                }
-                setDriver(data)
-            })
+        dispatch(getDetailDriver(id))
     }, [id])
     return (
         <div>

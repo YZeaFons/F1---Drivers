@@ -5,12 +5,12 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('Driver', {
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       primaryKey: true,
-      autoIncrement: true,
       allowNull: false,
+      defaultValue: DataTypes.UUIDV4
     },
-    name: {
+    forename: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -35,7 +35,7 @@ module.exports = (sequelize) => {
     //   type: DataTypes.STRING,
     // },
     birthday: {
-      type: DataTypes.DATE,
+      type: DataTypes.STRING,
       allowNull: false
     },
     source: {

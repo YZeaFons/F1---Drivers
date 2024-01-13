@@ -20,7 +20,7 @@ export default function Form(props) {
     }, [])
     // --------------------------- States -----------------------------
     const [newDriver, setDriver] = useState({
-        name: '',
+        forename: '',
         surname: '',
         nationality: '',
         image: '',
@@ -30,7 +30,7 @@ export default function Form(props) {
     })
 
     const [errors, setError] = useState({
-        name: '',
+        forename: '',
         surname: '',
         nationality: '',
         image: '',
@@ -56,7 +56,7 @@ export default function Form(props) {
         event.preventDefault()
         props.createDriver(newDriver)
         setDriver({
-            name: '',
+            forename: '',
             surname: '',
             nationality: '',
             image: '',
@@ -101,13 +101,13 @@ export default function Form(props) {
             <form onSubmit={handleSubmit}>
                 <label>Nombre: </label>
                 <input
-                    name='name'
+                    name='forename'
                     type="text"
                     placeholder='Ingrese el nombre del Driver'
-                    value={newDriver.name}
+                    value={newDriver.forename}
                     onChange={handleChange}
                 />
-                <p>{errors.name}</p>
+                <p>{errors.forename}</p>
                 <br />
 
                 <label>Apellido: </label>
