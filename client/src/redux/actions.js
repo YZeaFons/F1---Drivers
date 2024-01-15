@@ -1,5 +1,5 @@
 import axios from "axios"
-import { ADD_DRIVER, GET_DETAIL, GET_DRIVERS, SEARCH_NAME } from "./actionType"
+import { ADD_DRIVER, GET_DETAIL, GET_DRIVERS, PREVIOUS_STATE, SEARCH_NAME } from "./actionType"
 const endpoint = 'http://localhost:3001/F1/driver'
 const URL = 'http://localhost:3001/F1/drivers/name'
 
@@ -49,5 +49,11 @@ export const searchByName = (name) => {
         } catch (error) {
             alert(error.message)
         }
+    }
+}
+
+export const previousState = () => {
+    return {
+        type: PREVIOUS_STATE,
     }
 }

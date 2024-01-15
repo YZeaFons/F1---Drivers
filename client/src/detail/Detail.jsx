@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import { getDetailDriver } from '../redux/actions';
+import { getDetailDriver, previousState } from '../redux/actions';
 
 export default function Detail(props) {
     const dispatch = useDispatch()
@@ -14,10 +14,15 @@ export default function Detail(props) {
     useEffect(() => {
         dispatch(getDetailDriver(id))
     }, [id])
+
+    const handleClick = () => {
+        dispatch(previousState())
+    }
+
     return (
         <div>
             <Link to='/home'>
-                <img src={driver.image} />
+                <img src={driver.image} onClick={handleClick} />
             </Link>
             <br />
             <h2>Id: {driver.id}</h2>

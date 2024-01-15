@@ -1,9 +1,9 @@
-import { ADD_DRIVER, GET_DETAIL, GET_DRIVERS, GET_ORIGIN, REMOVE_DRIVER, SEARCH_NAME } from "./actionType";
+import { ADD_DRIVER, GET_DETAIL, GET_DRIVERS, GET_ORIGIN, PREVIOUS_STATE, REMOVE_DRIVER, SEARCH_NAME } from "./actionType";
 
 const initialState = {
     allDrivers: [],
     myDrivers: [],
-    myDetailDriver: {},
+    previousDriver: [],
     myTeams: [],
     origins: []
 }
@@ -14,13 +14,15 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 allDrivers: action.payload,
-                myDrivers: action.payload
+                myDrivers: action.payload,
+                previousDriver: action.payload
             }
         case ADD_DRIVER:
             return {
                 ...state,
                 allDrivers: action.payload,
-                myDrivers: action.payload
+                myDrivers: action.payload,
+                previousDriver: action.payload
             }
         case REMOVE_DRIVER:
             return {
@@ -34,10 +36,16 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 myDrivers: detailDriver
             }
+        case PREVIOUS_STATE:
+            return {
+                ...state,
+                myDrivers: state.previousDriver
+            }
         case SEARCH_NAME:
             return {
                 ...state,
-                myDrivers: action.payload
+                myDrivers: action.payload,
+                previousDriver: action.payload
             }
         case GET_ORIGIN:
             let allOrigins = state.allDrivers.filter(item => item.source)
@@ -50,7 +58,3 @@ const reducer = (state = initialState, action) => {
     }
 }
 export default reducer
-
-
-// let allOrigins = state.allDrivers.filter((item, index) => { item.source })
-// console.log(allOrigins);
