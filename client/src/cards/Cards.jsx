@@ -3,8 +3,9 @@ import SearchBar from '../searchBar/SearchBar';
 import Card from '../card/Card';
 import './Cards.css'
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllDrivers, searchByName } from '../redux/actions'
+import { getAllDrivers, getAllTeams, searchByName } from '../redux/actions'
 import Pagination from '../pagination/Pagination';
+import Filters from '../filters/Filters';
 
 export default function Cards(props) {
 
@@ -15,8 +16,6 @@ export default function Cards(props) {
     const [driverPerPage, setNumDriversPerPage] = useState(9)
     const [totalPaginas, setNumTotalPaginas] = useState(0)
     const [currentPage, setCurrentPage] = useState(1)
-    const [driversPag, setDriversPag] = useState([])
-    console.log(totalPaginas);
     // ?---------------------- useEffect ----------------------------
     useEffect(() => {
         setNumTotalPaginas(Math.ceil(myDrivers.length / driverPerPage))
@@ -26,14 +25,22 @@ export default function Cards(props) {
     const onSearch = async (name) => {
         if (name === '') { window.alert('Debes ingresar un nombre') }
         dispatch(searchByName(name))
+        dispatch(getAllTeams())
         setCurrentPage(1)
         if (myDrivers.length === 0) window.alert('No existen coincidencias con el nombre proporcionado')
     }
 
     const allDrivers = () => {
         dispatch(getAllDrivers())
+        dispatch(getAllTeams())
         setCurrentPage(1)
     }
+    // ?--------------------- Pagination ------------------------
+    const indexLast = (currentPage) * driverPerPage
+    const indexFirst = indexLast - driverPerPage
+    const driversToShow = myDrivers.slice(indexFirst, indexLast)
+
+    console.log(driversToShow);
 
     return (
         <section>
@@ -43,11 +50,14 @@ export default function Cards(props) {
             <div>
                 <Pagination totalPaginas={totalPaginas} currentPage={currentPage} setCurrentPage={setCurrentPage} />
             </div>
+            <div>
+                <Filters />
+            </div>
             <div className='cardContainer'>
                 {
-                    !myDrivers.length
+                    !driversToShow.length
                         ? <h2>No se han seleccionado Drivers</h2>
-                        : myDrivers.map(driver => (
+                        : driversToShow.map(driver => (
                             <Card
                                 key={driver.id}
                                 id={driver.id}

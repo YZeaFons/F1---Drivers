@@ -147,13 +147,6 @@ export default function Form(props) {
 
                 <label>Escuderías: </label>
                 <br />
-                {/* <input
-                    name='teams'
-                    type="text"
-                    placeholder='Ingrese las escuderias a las que ha pertenecido'
-                    value={newDriver.teams}
-                    onChange={handleChange}
-                /> */}
                 <select multiple onChange={handleSelectChange}>
                     {teams.map((option) => (
                         <option
@@ -163,22 +156,10 @@ export default function Form(props) {
                             {option.Name}
                         </option>
                     ))}
-
                 </select>
-
                 <p>Selected options: {newDriver.teams}</p>
                 <p>{errors.teams}</p>
                 <br />
-
-                {/* <label>Escuderias 2: </label>
-                <Select
-                    options={teams.map((option) => ({ label: option.Name, value: option.Name }))}
-                    onChange={handleSelectChange}
-                    isMulti
-                    value={teamsDriver}
-                />
-                <p>{errors.teamsDriver}</p>
-                <br /> */}
 
                 <label>Descripcion: </label>
                 <input
@@ -191,6 +172,7 @@ export default function Form(props) {
                 <p>{errors.description}</p>
                 <br />
                 {/* <hr /> */}
+
                 <button
                     type='submit'
                     disabled={

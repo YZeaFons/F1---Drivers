@@ -13,6 +13,7 @@ const getDrivers = async (req, res) => {
             teams: element.teams,
             image: element.image?.url,
             birthday: element.dob,
+            numberBirthday: new Date(element.dob).getTime(),
             nationality: element.nationality,
             description: element.description,
             source: 'API',

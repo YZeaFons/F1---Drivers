@@ -26,9 +26,12 @@ const get15drivers = async (req, res) => {
             forename: element.name?.forename,
             surname: element.name?.surname,
             image: element.image?.url,
+            birthday: element.dob,
+            numberBirthday: new Date(element.dob).getTime(),
             nationality: element.nationality,
             teams: element.teams,
             description: element.description,
+            source: 'API',
         }))
         const allDrivers = driversBD.concat(driversfixed)
         if (allDrivers.length > 15) allDrivers.slice(0, 15)

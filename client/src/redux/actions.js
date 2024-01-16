@@ -1,7 +1,8 @@
 import axios from "axios"
-import { ADD_DRIVER, GET_DETAIL, GET_DRIVERS, PREVIOUS_STATE, SEARCH_NAME } from "./actionType"
+import { ADD_DRIVER, FILTER_ORIGIN, FILTER_TEAM, GET_DETAIL, GET_DRIVERS, GET_TEAMS, ORDER_ALF, ORDER_DOB, PREVIOUS_STATE, SEARCH_NAME } from "./actionType"
 const endpoint = 'http://localhost:3001/F1/driver'
 const URL = 'http://localhost:3001/F1/drivers/name'
+const endpointTeams = 'http://localhost:3001/F1/teams'
 
 export const addDriver = (newDriver) => {
     return async (dispatch) => {
@@ -23,6 +24,20 @@ export const getAllDrivers = () => {
             const { data } = await axios.get(endpoint)
             return dispatch({
                 type: GET_DRIVERS,
+                payload: data
+            })
+        } catch (error) {
+            alert(error.message)
+        }
+    }
+}
+
+export const getAllTeams = () => {
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.get(endpointTeams)
+            return dispatch({
+                type: GET_TEAMS,
                 payload: data
             })
         } catch (error) {
@@ -55,5 +70,33 @@ export const searchByName = (name) => {
 export const previousState = () => {
     return {
         type: PREVIOUS_STATE,
+    }
+}
+
+export const filterByOrigin = (origin) => {
+    return {
+        type: FILTER_ORIGIN,
+        payload: origin
+    }
+}
+
+export const filterByTeam = (team) => {
+    return {
+        type: FILTER_TEAM,
+        payload: team
+    }
+}
+
+export const orderAlfabet = (order) => {
+    return {
+        type: ORDER_ALF,
+        payload: order
+    }
+}
+
+export const orderByDOB = (date) => {
+    return {
+        type: ORDER_DOB,
+        payload: date
     }
 }

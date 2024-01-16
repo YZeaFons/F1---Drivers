@@ -31,11 +31,15 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    // teams: {
-    //   type: DataTypes.STRING,
-    // },
+    teams: {
+      type: DataTypes.STRING,
+    },
     birthday: {
       type: DataTypes.STRING,
+      allowNull: false
+    },
+    numberBirthday: {
+      type: DataTypes.BIGINT,
       allowNull: false
     },
     source: {
