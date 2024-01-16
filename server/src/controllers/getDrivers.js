@@ -1,10 +1,15 @@
 const { default: axios } = require("axios")
-const { Driver } = require("../db")
+const { Driver, Teams } = require("../db")
 const API = 'http://localhost:5000/drivers'
 
 const getDrivers = async (req, res) => {
     try {
-        const driversBD = await Driver.findAll()
+        const driversBD = await Driver.findAll({
+            include: [{
+                model: Teams,
+                as: 'teams'
+            }]
+        })
         const { data } = await axios.get(API)
         const driversAPI = data.map(element => ({
             id: element.id.toString(),

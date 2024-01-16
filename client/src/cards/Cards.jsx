@@ -43,16 +43,20 @@ export default function Cards(props) {
     console.log(driversToShow);
 
     return (
-        <section>
-            <div>
+        <section className='mainContainer'>
+            <div className='topBar'>
                 <SearchBar onSearch={onSearch} allDrivers={allDrivers} />
             </div>
-            <div>
-                <Pagination totalPaginas={totalPaginas} currentPage={currentPage} setCurrentPage={setCurrentPage} />
-            </div>
-            <div>
-                <Filters />
-            </div>
+            <aside className='sideBar'>
+                <div>
+                    <Pagination totalPaginas={totalPaginas} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+                </div>
+                <div>
+                    <Filters />
+                </div>
+
+            </aside>
+
             <div className='cardContainer'>
                 {
                     !driversToShow.length
@@ -63,7 +67,7 @@ export default function Cards(props) {
                                 id={driver.id}
                                 image={driver.image}
                                 fullName={`${driver.forename} ${driver.surname}`}
-                                teams={driver.teams}
+                                teams={Array.isArray(driver.teams) ? driver.teams.map(team => team.Name).join(', ') : driver.teams}
                             />
                         ))
                 }

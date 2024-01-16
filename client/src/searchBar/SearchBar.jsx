@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import './Searchbar.css'
 export default function SearchBar({ onSearch, allDrivers }) {
     //? ------------- States ---------------------
     const [name, setName] = useState('')
@@ -15,7 +16,7 @@ export default function SearchBar({ onSearch, allDrivers }) {
     }
 
     return (
-        <div>
+        <div className='searchbar'>
             <label>Driver :  </label>
             <input
                 type='text'
@@ -26,6 +27,7 @@ export default function SearchBar({ onSearch, allDrivers }) {
                 placeholder='Ingrese nombre a buscar'
             />
             <button onClick={() => handleClick()}>Buscar</button>
+
             <NavLink to='/create'>
                 <button>Crear Nuevo</button>
             </NavLink>

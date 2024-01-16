@@ -7,12 +7,15 @@ export default function Card(props) {
         <div>
             <div className='card'>
                 <div className='content'>
-                    <Link to={`/driver/${props.id}`}>
-                        <img src={props.image} alt="No image found" />
-                    </Link>
-                    <h2>Name: {props.fullName}</h2>
-                    <h2>Teams: {props.teams}</h2>
-
+                    <div className='cardImg'>
+                        <Link className='imagelink' to={`/driver/${props.id}`}>
+                            <img className='img' src={props.image || 'https://i.pinimg.com/originals/49/ca/fe/49cafe61f30e6da84ac47abfd7fbea9a.png'} alt="No image found" />
+                        </Link>
+                    </div>
+                    <div className='footer'>
+                        <h3>Name: {props.fullName}</h3>
+                        <h2>Teams: {props.teams}</h2>
+                    </div>
                 </div>
             </div>
 

@@ -1,8 +1,12 @@
 .notFound {
     margin: 0;
-    background-image: url(https://images5.alphacoders.com/951/951883.png);
-    background-position: center;
+    background-image: url(https://www.topgear.com/sites/default/files/2022/07/1%20Guanyu%20Zhou.jpg);
+    height: 100vh;
+    width: 100vw;
     background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: italic bold 25px/150% sans-serif;
+    color: black;
 }

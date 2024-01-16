@@ -36,8 +36,8 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 const { Driver, Teams } = sequelize.models;
 // --------A continuacion creamos la relacion entre tablas----
-Driver.belongsToMany(Teams, { through: 'driver_team' })
-Teams.belongsToMany(Driver, { through: 'driver_team' })
+Driver.belongsToMany(Teams, { through: 'driver_team', as: 'teams' })
+Teams.belongsToMany(Driver, { through: 'driver_team', as: 'teams' })
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);

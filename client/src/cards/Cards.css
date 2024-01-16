@@ -1,9 +1,45 @@
-.cardContainer {
+.mainContainer {
+    display: grid;
+    grid-template-areas:
+        "head head head head"
+        "side content2 content2 content2";
+    /* flex-wrap: wrap; */
+}
+
+.topBar {
+    grid-area: head;
+    padding: 1%;
     display: flex;
     justify-content: center;
-    /* align-items: center; */
-    /* align-items: center; */
-    flex-flow: row wrap;
-    margin: 10px;
+    align-items: center;
+}
 
+.sideBar {
+    grid-area: side;
+    padding: 1%;
+    display: block;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.cardContainer {
+    grid-area: content2;
+    padding: 1%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-flow: row wrap;
+}
+
+@media (max-width: 768px) {
+    .mainContainer {
+        flex-direction: column;
+    }
+
+    .topBar,
+    .cardContainer,
+    .sideBar {
+        width: 100%;
+    }
 }
