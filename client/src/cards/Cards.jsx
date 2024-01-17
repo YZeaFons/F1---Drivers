@@ -12,7 +12,6 @@ export default function Cards(props) {
     // ?---------------------- Hooks ----------------------------
     const dispatch = useDispatch()
     const myDrivers = useSelector(state => state.myDrivers)
-    console.log(myDrivers);
     // ?---------------------- States ----------------------------
     const [driverPerPage, setNumDriversPerPage] = useState(9)
     const [totalPaginas, setNumTotalPaginas] = useState(0)

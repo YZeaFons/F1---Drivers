@@ -8,7 +8,6 @@ export const addDriver = (newDriver) => {
     return async (dispatch) => {
         try {
             const { data } = await axios.post(endpoint, newDriver)
-            console.log(data);
             if (data.error) throw new Error(data.error)
             window.alert("Su driver fue creado correctamente");
             return dispatch({
