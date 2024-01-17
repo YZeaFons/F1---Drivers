@@ -34,8 +34,8 @@ const get15drivers = async (req, res) => {
             source: 'API',
         }))
         const allDrivers = driversBD.concat(driversfixed)
-        if (allDrivers.length > 15) allDrivers.slice(0, 15)
-        return res.status(200).json(allDrivers)
+        const ftDrivers = allDrivers.slice(0, 15)
+        return res.status(200).json(ftDrivers)
     } catch (error) {
         return res.status(400).send('No fue posible hacer la busqueda')
     }

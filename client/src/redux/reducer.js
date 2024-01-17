@@ -1,11 +1,12 @@
-import { ADD_DRIVER, FILTER_ORIGIN, FILTER_TEAM, GET_DETAIL, GET_DRIVERS, GET_ORIGIN, GET_TEAMS, ORDER_ALF, ORDER_DOB, PREVIOUS_STATE, REMOVE_DRIVER, SEARCH_NAME } from "./actionType";
+import { ADD_DRIVER, FILTER_ORIGIN, FILTER_TEAM, GET_DETAIL, GET_DRIVERS, GET_ORIGIN, GET_TEAMS, ORDER_ALF, ORDER_DOB, PREVIOUS_STATE, REMOVE_DRIVER, SEARCH_NAME, SEARCH_REPEAT } from "./actionType";
 
 const initialState = {
     allDrivers: [],
     myDrivers: [],
     previousDriver: [],
     myTeams: [],
-    origins: []
+    origins: [],
+    repeatDrivers: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -93,12 +94,6 @@ const reducer = (state = initialState, action) => {
             }
 
         case ORDER_DOB:
-            // if (action.payload === '-') {
-            //     return {
-            //         ...state,
-            //         myDrivers: state.previousDriver
-            //     }
-            // }
             const orderTemp = [...state.myDrivers]
             if (action.payload === 'Mayor a Menor') orderTemp.sort((a, b) => Number(a.numberBirthday) - Number(b.numberBirthday))
             if (action.payload === 'Menor a Mayor') orderTemp.sort((a, b) => Number(b.numberBirthday) - Number(a.numberBirthday))
@@ -108,12 +103,6 @@ const reducer = (state = initialState, action) => {
             }
 
         case ORDER_ALF:
-            // if (action.payload === '-') {
-            //     return {
-            //         ...state,
-            //         myDrivers: state.previousDriver
-            //     }
-            // }
             const orderTempAlf = [...state.myDrivers]
             if (action.payload === 'A-Z') {
                 orderTempAlf.sort((a, b) => {
@@ -134,6 +123,16 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 myDrivers: orderTempAlf
             }
+        // case SEARCH_REPEAT:
+
+        //     const filterName = state.allDrivers.filter(item => item.forename.toLowerCase() === action.payload[0].toLowerCase())
+        //     const filterSurname = filterName?.filter(item => item.surename.toLowerCase() === action.payload[1].toLowerCase())
+        //     return {
+        //         ...state,
+        //         repeatDrivers: [],
+        //         repeatDrivers: filterSurname
+
+        //     }
 
         default:
             return { ...state };

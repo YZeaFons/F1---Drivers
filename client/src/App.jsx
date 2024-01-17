@@ -17,7 +17,6 @@ function App() {
   // ******************* F createDriver *******************
   const createDriver = (newDriver) => {
     dispatch(addDriver(newDriver))
-    window.alert('Su driver fue creado correctamente')
     navigate('/home')
   }
 

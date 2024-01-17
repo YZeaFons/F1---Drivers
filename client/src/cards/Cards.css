@@ -1,8 +1,8 @@
 .mainContainer {
     display: grid;
     grid-template-areas:
-        "head head head head"
-        "side content2 content2 content2";
+        "head head head"
+        "side content2 content2";
     /* flex-wrap: wrap; */
 }
 
@@ -15,6 +15,7 @@
 }
 
 .sideBar {
+    width: 100%;
     grid-area: side;
     padding: 1%;
     display: block;

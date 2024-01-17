@@ -17,8 +17,9 @@ export default function SearchBar({ onSearch, allDrivers }) {
 
     return (
         <div className='searchbar'>
-            <label>Driver :  </label>
+            <label className='driverSearch'>Search Driver :  </label>
             <input
+                className='input'
                 type='text'
                 name='search'
                 id='search'

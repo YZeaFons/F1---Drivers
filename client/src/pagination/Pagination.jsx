@@ -1,4 +1,5 @@
 import React from 'react';
+import './Pagination.css'
 import { Link } from 'react-router-dom';
 
 
@@ -14,18 +15,22 @@ export default function Pagination({ totalPaginas, currentPage, setCurrentPage }
     }
 
     return (
-        <div>
-            {currentPage > 1 ? (
-                <button onClick={handlePrev}>
-                    ⇚
-                </button>
-            ) : (<p>⇚ </p>)}
-            <p>Pagina {currentPage} de {totalPaginas} </p>
-            {currentPage < totalPaginas ? (
-                <button onClick={handleNext}>
-                    ⇛
-                </button>
-            ) : (<p>⇛ </p>)}
+        <div className='Paginationmain'>
+            <div className='paginationPag'>
+                <p>Pagina {currentPage} de {totalPaginas} </p>
+            </div>
+            <div className='paginationSel'>
+                {currentPage > 1 ? (
+                    <button className='buttonleft' onClick={handlePrev}>
+                        ⇚
+                    </button>
+                ) : (<p>⇚</p>)}
+                {currentPage < totalPaginas ? (
+                    <button onClick={handleNext}>
+                        ⇛
+                    </button>
+                ) : (<p>⇛ </p>)}
+            </div>
         </div>
     )
 }

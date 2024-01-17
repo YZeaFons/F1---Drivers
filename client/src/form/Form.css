@@ -1,0 +1,84 @@
+.main {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.mainForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #c20707;
+    border-radius: 10px;
+    height: max-content;
+    width: max-content;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.mainForm input:active {
+    box-shadow: 2px 2px 15px #8707ff inset;
+}
+
+.mainForm form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainForm input {
+    color: white;
+    border: 2px solid rgb(194 7 7);
+    border-radius: 10px;
+    padding: 10px 25px;
+    background: transparent;
+    width: 390px;
+}
+
+.mainForm p {
+    color: rgb(216, 90, 90);
+}
+
+.mainForm h4 {
+    color: white;
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.8rem;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.mainForm li {
+    color: white;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.7rem;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.mainForm label {
+    color: white;
+    margin-right: 10px;
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.7rem;
+    margin-bottom: 10px;
+}
+
+.main h2 {
+    color: white;
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.9rem;
+}
+
+.main .mainForm .formButtons .boton1 {
+    margin-right: 10px;
+}

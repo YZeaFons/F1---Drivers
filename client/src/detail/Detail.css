@@ -1,0 +1,46 @@
+.detailMain {
+    display: grid;
+    place-items: center;
+    margin: 0;
+}
+
+.centerDetail {
+    margin-top: 65px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.651);
+
+    border: 3px solid #c20707;
+    border-radius: 10px;
+    height: 95%;
+    width: 95%;
+}
+
+.detailImage img {
+    border: 1px solid #2c2450cb;
+    width: 430px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 20px;
+    margin-right: 20px;
+}
+
+.InformacionDetail {
+    color: rgb(216, 208, 208);
+    text-align: center;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 0.9rem;
+}
+
+.centerDetail .detailName {
+    color: rgb(221, 38, 38);
+    font-size: 1.2rem;
+}
+
+.InformacionDetail h2 {
+    margin-bottom: 15px;
+}

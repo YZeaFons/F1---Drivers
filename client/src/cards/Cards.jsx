@@ -12,6 +12,7 @@ export default function Cards(props) {
     // ?---------------------- Hooks ----------------------------
     const dispatch = useDispatch()
     const myDrivers = useSelector(state => state.myDrivers)
+    console.log(myDrivers);
     // ?---------------------- States ----------------------------
     const [driverPerPage, setNumDriversPerPage] = useState(9)
     const [totalPaginas, setNumTotalPaginas] = useState(0)
@@ -40,7 +41,6 @@ export default function Cards(props) {
     const indexFirst = indexLast - driverPerPage
     const driversToShow = myDrivers.slice(indexFirst, indexLast)
 
-    console.log(driversToShow);
 
     return (
         <section className='mainContainer'>
@@ -52,7 +52,7 @@ export default function Cards(props) {
                     <Pagination totalPaginas={totalPaginas} currentPage={currentPage} setCurrentPage={setCurrentPage} />
                 </div>
                 <div>
-                    <Filters />
+                    <Filters setCurrentPage={setCurrentPage} />
                 </div>
 
             </aside>

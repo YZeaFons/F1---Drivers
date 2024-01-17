@@ -1,3 +1,25 @@
 .searchbar button {
     margin-left: 10px;
 }
+
+.input {
+    color: white;
+    border: 2px solid rgb(194 7 7);
+    border-radius: 10px;
+    padding: 10px 25px;
+    background: transparent;
+    max-width: 290px;
+}
+
+.input:active {
+    box-shadow: 2px 2px 15px #8707ff inset;
+}
+
+.searchbar label {
+    color: white;
+    margin-right: 10px;
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.7rem;
+}

@@ -14,7 +14,10 @@ export default function Card(props) {
                     </div>
                     <div className='footer'>
                         <h3>Name: {props.fullName}</h3>
-                        <h2>Teams: {props.teams}</h2>
+                        <h2>Teams:</h2>
+                        <ul className='twocolumns'>{props.teams?.split(',').map((team, index) => (
+                            <ul key={index}>{team}</ul>
+                        ))}</ul>
                     </div>
                 </div>
             </div>

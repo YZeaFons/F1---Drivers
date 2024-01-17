@@ -1,0 +1,35 @@
+.Paginationmain {
+    padding: 15px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.9rem;
+}
+
+.paginationPag {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.paginationSel {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.paginationSel .buttonleft {
+    margin-right: 10px;
+}
+
+.paginationSel p {
+    margin-right: 10px;
+}

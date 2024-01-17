@@ -1,0 +1,53 @@
+.Filters {
+    padding: 15px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+}
+
+.filterOrder {
+    margin-top: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.clase2 {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.clase2 label {
+    margin-bottom: 5px;
+}
+
+.clase2 select {
+    border-radius: 10px;
+    border: none;
+    margin: 5px;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.555);
+}
+
+.clase2 option {
+    background-color: rgba(216, 159, 159, 0.5);
+}
+
+.Filters h3 {
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.9rem;
+}
+
+.Filters label {
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.8rem;
+}

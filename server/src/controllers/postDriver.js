@@ -12,7 +12,7 @@ const postDriver = async (req, res) => {
         })
 
         if (driverExists) {
-            throw new Error('Driver ya existe')
+            return res.json({ error: 'El driver ingresado ya existe en la base de datos' });
         }
 
         const numberBirthday = new Date(birthday).getTime()

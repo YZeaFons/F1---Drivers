@@ -8,6 +8,9 @@ export const addDriver = (newDriver) => {
     return async (dispatch) => {
         try {
             const { data } = await axios.post(endpoint, newDriver)
+            console.log(data);
+            if (data.error) throw new Error(data.error)
+            window.alert("Su driver fue creado correctamente");
             return dispatch({
                 type: ADD_DRIVER,
                 payload: data
@@ -57,6 +60,7 @@ export const searchByName = (name) => {
     return async (dispatch) => {
         try {
             const { data } = await axios.get(`${URL}?name=${name}`)
+            if (data.error) return data.error
             return dispatch({
                 type: SEARCH_NAME,
                 payload: data
