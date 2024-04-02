@@ -7,6 +7,8 @@ import Detail from './detail/Detail'
 import Form from './form/Form'
 import { useDispatch } from 'react-redux'
 import { addDriver } from './redux/actions'
+import axios from 'axios'
+axios.defaults.baseURL = 'http://localhost:3001/'
 
 function App() {
   // ?---------------------- Hooks ----------------------------

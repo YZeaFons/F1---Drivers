@@ -5,7 +5,7 @@ const { default: axios } = require("axios")
 
 const postDriver = async (req, res) => {
     try {
-        const { forename, surname, description, image, nationality, teams, birthday, height } = req.body
+        const { forename, surname, description, image, nationality, teams, birthday } = req.body
         const driverExists = await Driver.findOne({
             where: {
                 forename: { [Op.iLike]: `%${forename.toLowerCase()}%` },
@@ -31,7 +31,7 @@ const postDriver = async (req, res) => {
 
         const numberBirthday = new Date(birthday).getTime()
         if (forename && surname && description && image && nationality && birthday) {
-            const newDriver = await Driver.create({ forename, surname, description, image, nationality, birthday, numberBirthday, height })
+            const newDriver = await Driver.create({ forename, surname, description, image, nationality, birthday, numberBirthday })
 
             const arrayTeams = teams.split(',')
             if (arrayTeams.length) {

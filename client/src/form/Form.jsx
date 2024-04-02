@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import axios from 'axios'
 import './Form.css'
 
-const URLTeams = 'http://localhost:3001/F1/teams'
+const URLTeams = '/F1/teams'
 
 export default function Form(props) {
     //? --------------------------- USE EFFECT -------------------------

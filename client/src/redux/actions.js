@@ -1,8 +1,8 @@
 import axios from "axios"
 import { ADD_DRIVER, FILTER_ORIGIN, FILTER_TEAM, GET_DETAIL, GET_DRIVERS, GET_TEAMS, ORDER_ALF, ORDER_DOB, PREVIOUS_STATE, SEARCH_NAME } from "./actionType"
-const endpoint = 'http://localhost:3001/F1/driver'
-const URL = 'http://localhost:3001/F1/drivers/name'
-const endpointTeams = 'http://localhost:3001/F1/teams'
+const endpoint = '/F1/driver'
+const URL = '/F1/drivers/name'
+const endpointTeams = '/F1/teams'
 
 export const addDriver = (newDriver) => {
     return async (dispatch) => {

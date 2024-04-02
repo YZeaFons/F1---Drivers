@@ -31,10 +31,10 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    height: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
+    // height: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false
+    // },
     // teams: {
     //   type: DataTypes.STRING,
     // },
