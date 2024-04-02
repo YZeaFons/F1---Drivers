@@ -8,7 +8,7 @@ import Form from './form/Form'
 import { useDispatch } from 'react-redux'
 import { addDriver } from './redux/actions'
 import axios from 'axios'
-axios.defaults.baseURL = 'http://localhost:3001/'
+axios.defaults.baseURL = 'https://f1-drivers-production-ad0a.up.railway.app/'
 
 function App() {
   // ?---------------------- Hooks ----------------------------
