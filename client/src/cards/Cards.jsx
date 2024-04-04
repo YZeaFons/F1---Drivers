@@ -48,10 +48,10 @@ export default function Cards(props) {
             </div>
             <aside className='sideBar'>
                 <div>
-                    <Pagination totalPaginas={totalPaginas} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+                    <Filters setCurrentPage={setCurrentPage} />
                 </div>
                 <div>
-                    <Filters setCurrentPage={setCurrentPage} />
+                    <Pagination totalPaginas={totalPaginas} currentPage={currentPage} setCurrentPage={setCurrentPage} />
                 </div>
 
             </aside>
